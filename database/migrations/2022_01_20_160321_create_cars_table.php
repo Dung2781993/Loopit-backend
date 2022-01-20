@@ -17,6 +17,7 @@ class CreateCarsTable extends Migration
             $table->id();
             $table->string('name');
             $table->longText('description')->nullable();
+            $table->text('image_path')->nullable();
             $table->double('price')->nullable();
             $table->integer('numberOfStocks')->nullable();
             $table->text('address')->nullable();
