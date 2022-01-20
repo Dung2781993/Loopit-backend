@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,4 +26,8 @@ Route::prefix('auth')->group(function () {
         Route::get('/user', [AuthController::class, 'userProfile']);
         Route::post('/logout', [AuthController::class, 'logout']);
     });
+});
+
+Route::prefix('car')->group(function () {
+    Route::get('/getAll', [CarController::class, 'index']);
 });
