@@ -16,11 +16,18 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        /* User create
         User::create([
             'name' => 'Hellomama',
             'email' => 'Hellomama@gmail.com',
             'password' => Hash::make('Hellomama93'),
             'created_at' => new DateTime()
         ]);
+        */
+        $this->call(
+            [
+                CarSeeder::class
+            ]
+        );
     }
 }
