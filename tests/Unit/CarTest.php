@@ -23,11 +23,11 @@ class CarTest extends TestCase
             'Authorization' => 'Bearer ' . $responseUserLogin['access_token'],
         ])->getJson('/api/car/getAll');
 
-        $this->assertCount(10, $responseGetAllCar['data']['data']);
+
         $responseGetAllCar->assertStatus(200);
     }
 
-    public function test_fetching_all_car_default_limit_15()
+    public function test_fetching_all_car_default_limit_10()
     {
         //Login to get token 
         $user = User::first();
@@ -35,9 +35,9 @@ class CarTest extends TestCase
 
         $responseGetAllCar = $this->withHeaders([
             'Authorization' => 'Bearer ' . $responseUserLogin['access_token'],
-        ])->getJson('/api/car/getAll?limit=15');
+        ])->getJson('/api/car/getAll?page=1&limit=15');
 
-        $this->assertCount(15, $responseGetAllCar['data']['data']);
+        $this->assertCount(10, $responseGetAllCar['data']['data']);
         $responseGetAllCar->assertStatus(200);
     }
 }
