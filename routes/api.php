@@ -29,5 +29,7 @@ Route::prefix('auth')->group(function () {
 });
 
 Route::prefix('car')->group(function () {
-    Route::get('/getAll', [CarController::class, 'index']);
+    Route::group(['middleware' => 'jwt.verify'], function(){
+        Route::get('/getAll', [CarController::class, 'index']);
+    });
 });
